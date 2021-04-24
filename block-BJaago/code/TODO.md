@@ -26,7 +26,7 @@ var userMessage = sayHelloToUser('Bran');
 
 <!-- Put your image below -->
 
-![img1](block-BJaago/code/img/img1.PNG)
+![img1](./img/img1.PNG)
 
 2.
 
@@ -43,7 +43,7 @@ sayHi();
 
 <!-- Put your image below -->
 
-![img2](block-BJaago/code/img/img2.PNG)
+![img2](./img/img2.PNG)
 
 3.
 
@@ -60,7 +60,7 @@ sayHi();
 
 <!-- Put your image below -->
 
-![img3](block-BJaago/code/img/img3.PNG)
+![img3](./img/img3.PNG)
 
 4.
 
@@ -74,4 +74,4 @@ function double(num) {
   return num * 2;
 }
 ```
-![img4](block-BJaago/code/img/img4.PNG)
+![img4](./img/img4.PNG)
