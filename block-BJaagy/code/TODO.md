@@ -1,6 +1,36 @@
 1. Create a function by your choice that accepts a callback function.
 
+```js
+function parseElm( arr , cb) {
+  let finalArr = [];
+  for(let elm of arr) {
+    finalArr.push(cb(elm));
+  }
+  return finalArr;
+}
+
+function addTwo(n) {
+  return n + 2;
+}
+
+let newArr = parseElm([1,2,3] , addTwo);
+```
+
 2. Create a function by you choice that returns a function reference.
+
+```js
+function greeting() {
+  function sayHello() {
+    console.log('Hello!');
+  }
+
+  return sayHello;
+}
+
+let greetingType = greeting();
+greetingType();
+
+```
 
 3. Create a higher order function called `map` that takes two inputs:
    - An array of numbers/string/boolean etc
@@ -10,6 +40,13 @@ Have `map` return a new array filled with values that are the result of the 'cal
 
 ```js
 // Your code goes here
+function map(arr, cb) {
+  let finalArr = [];
+  for(let elm of arr) {
+    finalArr.push(cb(elm));
+  }
+  return finalArr;
+}
 
 // Test Your Code
 function multiplyByTwo(n) {
@@ -24,6 +61,11 @@ multiplyByTwo(2); //-> 4
 
 ```js
 // Your code goes here
+function forEach(arr, cb) {
+  for(let elm of arr) {
+    cb(elm);
+  }
+}
 
 // Test Your Code
 let alphabet = '';
@@ -38,6 +80,15 @@ console.log(alphabet); //prints 'abcd'
 
 ```js
 // Test Your Code
+function filter(arr, cb) {
+  let finalArr = [];
+  for(let elm of arr) {
+    if(cb(elm)) {
+      finalArr.push(elm);
+    }
+  }
+  return finalArr;
+}
 
 var numbers = [1, 3, 5, 4, 7, 89, 234, 20];
 let even = filter(numbers, function (n) {
