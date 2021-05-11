@@ -20,10 +20,9 @@ function outer(string) {
 // Your code goes here
 
 function delay(cb, wait) {
-  let delayedFn = setTimeout(() => {
-    cb();
-  }, wait);
-  return delayedFn;
+  return () => {
+    setTimeout(cb, wait);
+  }
 }
 
 ```
@@ -193,7 +192,9 @@ The returned function accepts a string (children) and returns the children with 
 function createTag(elm) {
   // your code goes here
   return (str) => {
-    return `<${elm}>${str}</${elm}>`;
+    let htmlElm = document.createElement(elm);
+    htmlElm.innerText = str;
+    return htmlElm;
   }
 }
 
