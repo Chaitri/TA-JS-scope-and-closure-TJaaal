@@ -5,7 +5,11 @@
 - It should work exactly like array `forEach` method
 
 ```js
-function forEach() {}
+function forEach(arr, cb) {
+  arr.reduce((acc, elm, i, arr) => {
+    cb(elm, i, arr);
+  }, arr[0]);
+}
 
 forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
   console.log(name + name, i, arr)
@@ -19,8 +23,14 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 - It should work exactly like array `map` method
 
 ```js
-function map() {
-  // Your code goes here
+
+function map(arr, cb) {
+  let mappedArr = arr.reduce(function (acc, elm) {
+    let newStr = cb(elm);
+    acc.push(newStr);
+    return acc;
+  }, []);
+  return mappedArr;
 }
 
 map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'AryaArya']
@@ -33,9 +43,16 @@ map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'Ary
 - It should work exactly like array `filter` method
 
 ```js
-function filter() {
-  // Your code goes here
+function filter(arr, cb) {
+  let filteredArr = arr.reduce((acc, elm) => {
+    if(cb(elm)) {
+      acc.push(elm);
+    }
+    return acc;
+  }, []);
+  return filteredArr;
 }
+
 filter(['Sam', 'Jon', 'Arya'], (name) =>
   name.startsWith('S')
 ); // ['Sam']
