@@ -10,9 +10,9 @@ const lastName = 'Stark';
 var knownAs = 'no one';
 
 console.log(
-  window.firstName,
-  window.lastName,
-  window.knownAs
+  window.firstName, // undefined
+  window.lastName, // undefined
+  window.knownAs // 'no one'
 );
 ```
 
@@ -27,41 +27,47 @@ function fullName(a, b) {
   return a + b;
 }
 
-console.log(window.fullName(firstName, lastName));
+console.log(window.fullName(firstName, lastName)); //Arya Stark
 ```
 
 3. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
-fucntion addOne(num){
+function addOne(num){
   return num + 1;
 }
 var one = addOne(0);
 var two = addOne(1);
-console.log(one, two);
+console.log(one, two); // 1 2
 ```
+
+![img1](./img/img1.png)
 
 4. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
 var one = addOne(0);
-fucntion addOne(num){
+function addOne(num){
   return num + 1;
 }
 var two = addOne(1);
-console.log(one, two);
+console.log(one, two); // 1 2
 ```
+
+![img2](./img/img2.png)
 
 5. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
-console.log(addOne(0));
-fucntion addOne(num){
+console.log(addOne(0)); // 1
+function addOne(num){
   return num + 1;
 }
 var two = addOne(1);
-console.log(two);
+console.log(two); // 2
 ```
+
+![img3](./img/img3.png)
 
 6. Make a Execution Context Diagram for the following JS and write the output.
 
@@ -74,6 +80,10 @@ var two = addOne(1);
 console.log(two);
 ```
 
+ERROR: Cannot access 'addOne' before initialization
+
+![img4](./img/img4.png)
+
 7. Make a Execution Context Diagram for the following JS and write the output.
 
 ```js
@@ -84,6 +94,9 @@ const addOne = (num) => {
 var two = addOne(1);
 console.log(two);
 ```
+
+ERROR: Cannot access 'addOne' before initialization
+![img5](./img/img5.png)
 
 8. What will be the output of the following
 
@@ -97,6 +110,7 @@ function isAwesome() {
 }
 isAwesome();
 ```
+undefined
 
 9. What will be the output of the following
 
@@ -111,6 +125,8 @@ function isAwesome() {
 isAwesome();
 ```
 
+true
+
 10. What will be the output of the following
 
 ```js
@@ -123,6 +139,8 @@ function isAwesome() {
 }
 isAwesome();
 ```
+
+undefined
 
 11. What will be the output of the following
 
@@ -138,6 +156,8 @@ const name = fullName(firstName, lastName);
 console.log(name);
 ```
 
+AryaStark
+
 12. Guess the output of the code below with a reason.
 
 ```js
@@ -149,6 +169,8 @@ sayHello();
 console.log(name);
 ```
 
+name is undeclared and not initialized outside sayHello function scope
+
 13. Guess the output of the code below with a reason.
 
 ```js
@@ -158,6 +180,8 @@ if (true) {
 console.log(name);
 ```
 
+Arya Stark, as var is not block scoped.
+
 14. Guess the output of the code below with a reason.
 
 ```js
@@ -166,6 +190,8 @@ if (true) {
 }
 console.log(name);
 ```
+name is undeclared and not initialized outside the block
+
 
 15. Guess the output of the code below with a reason.
 
@@ -176,6 +202,8 @@ for (var i = 0; i < 20; i++) {
 console.log(i);
 ```
 
+20, as we can access var outside the for loop scope.
+
 16. Guess the output of the code below with a reason.
 
 ```js
@@ -184,6 +212,9 @@ for (let i = 0; i < 20; i++) {
 }
 console.log(i);
 ```
+
+i is not defined error, as i is limited to scope of for loop
+
 
 17. Guess the output and the reason behind that.
 
@@ -196,6 +227,8 @@ function sample() {
 }
 sample();
 ```
+John Snow, as username is declared as 'var' and is not block scoped.
+
 
 18. Guess the output and the reason behind that.
 
@@ -208,6 +241,8 @@ function sample() {
 }
 sample();
 ```
+
+username is not defined, as username is in block-scope
 
 19. Guess the output and the reason behind that.
 
@@ -223,6 +258,10 @@ function sample() {
 sample();
 ```
 
+John Snow
+John Snow second
+this is because var does not have block scope, and the second declaration overrides the first one.
+
 20. Guess the output and the reason behind that.
 
 ```js
@@ -236,6 +275,9 @@ function sample() {
 }
 sample();
 ```
+John Snow first
+Arya Stark second
+this is because let has a block scope, and the second declared username does not over-write the one outside the block.
 
 21. Guess the output and the reason behind that.
 
@@ -250,6 +292,12 @@ function sample(...args) {
 sample('First', 'Second', 'Third');
 ```
 
+Hello I am First
+Hello I am Second
+Hello I am Third
+
+This is as the ... operator accepts 3 arguments, for which we can loop through and access individually using 'i' variable within for loop block.
+
 22. Guess the output and the reason behind that.
 
 ```js
@@ -263,6 +311,12 @@ function sample(...args) {
 sample('First', 'Second', 'Third');
 ```
 
+Hello I am First
+Hello I am Second
+Hello I am Third
+
+This is as the ... operator accepts 3 arguments, for which we can loop through and access individually using 'i' variable within for loop block, which gets assigned to message in for scope.
+
 23. Guess the output and the reason behind that.
 
 ```js
@@ -275,6 +329,8 @@ if (true) {
   myFunc();
 }
 ```
+
+Error, because we are trying to access username before it has been initialized.
 
 24. Guess the output and the reason behind that.
 
@@ -292,6 +348,10 @@ function outer() {
 outer();
 ```
 
+I love this movie called MAD MAX: FURY ROAD
+
+this is because inner() can access variables within it's parent function.
+
 25. Guess the output and the reason behind that.
 
 ```js
@@ -308,6 +368,10 @@ function outer() {
 
 outer();
 ```
+
+I love this movie called BEFORE SUNRISE
+
+this is because inner() is accessing the variable movie defined within it.
 
 26. Guess the output and the reason behind that.
 
@@ -328,6 +392,10 @@ function outer() {
 }
 outer();
 ```
+
+I love this movie called GONE GIRL
+
+this is because extraInner() is accessing the variable movie which is local to that function.
 
 30. Using reduce find the final value when the initial value passed is `100`. You have to pass the output of one function into the input of next function in the array `allFunctions` starts with `addOne` ends with `half`.
 
@@ -353,6 +421,8 @@ let allFunctions = [
   multiplyThree,
   half,
 ];
+
+allFunctions.reduce((acc, cv) => cv(acc) , 100);
 
 // Answer is: 447
 ```
