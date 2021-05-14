@@ -3,6 +3,12 @@
 ```js
 function once(cb) {
   // your code goes here
+  return function () {
+    if (cb) {
+      cb();
+      cb = null;
+    }
+  }
 }
 
 // TEST
@@ -17,8 +23,14 @@ log(); // return undefinde (can't be called twice)
 2. Change the above function in such a way that the function accepts two parameter a callback function and parameter for the callback function. When calling the function pass the parameters.
 
 ```js
-function once(cb) {
+function once(cb, value) {
   // your code goes here
+  return function () {
+    if (cb) {
+      cb(value);
+      cb = null;
+    }
+  }
 }
 
 // TEST
@@ -34,8 +46,14 @@ log(); // return undefinde (can't be called twice)
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
 
 ```js
-function once(cb) {
+function once(cb, ...values) {
   // your code goes here
+  return function () {
+    if (cb) {
+      cb(...values);
+      cb = null;
+    }
+  }
 }
 
 // TEST
@@ -49,6 +67,17 @@ log(); // return undefinde (can't be called twice)
 ```js
 function nTimes(cb, times, ...rest) {
   // your code goes here
+  let called = 1;
+  return function() {
+    if(called<=times) {
+      if(cb) {
+        cb(...rest);
+        called++;
+      }
+    } else {
+      cb = null;
+    }
+  }
 }
 
 // TEST
